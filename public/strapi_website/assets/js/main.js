@@ -1,11 +1,5 @@
 jQuery(function() {
-    $('.bnr_slider').slick({
-      dots: true,
-      infinite : false,
-      speed: 300,
-      slidesToShow: 1,
-      adaptiveHeight: true
-    });
+    
     $('.sec_2_slider').slick({
       dots: false,
       infinite: false,
@@ -141,26 +135,54 @@ jQuery(function() {
             console.error("Error: " + textStatus, errorThrown);
         }
     });
-    const owls = document.querySelectorAll('.owl-item');
     $.ajax({
         url: 'http://localhost:1337/api/banner-secs?populate=*',
         method: 'GET',
-        success: function(response6) {
-            console.log(response6);
-
-            response6.data.forEach((data,index) => {
-                var owlitem = owls[index];
-                var sub_text = data.attributes.sub_text;
-                var main_text = data.attributes.main_text;
-                var banner_bg_img = data.attributes.banner_bg_img.data.attributes.url;
-                var banner_logo = data.attributes.banner_logo.data.attributes.url;
-
-                var bnr_strctr = '<div class="bnr_slide"><div class="bnr_slide_in" style="background-image: url(http://localhost:1337' + banner_bg_img + ');"><div class="container"><div class="bnr_txt"><div class="bnr_txt_in"><div class="bnr_lg">' + main_text + '</div><div class="bnr_pic"><img src="http://localhost:1337' + banner_logo + '" alt="manufacturing in Canada since 2021"></div></div><p class="bnr_md">' + sub_text + '</p><a class="btn btn_lg popup_cta btn_alt" tabindex="-1">REQUEST A QUOTE</a><a href="#" class="btn btn_lg" tabindex="-1">VIEW PRODUCTS</a></div></div></div></div></div>'
-                $(owlitem).append(bnr_strctr);
+        success: function(response) {
+            console.log(response);
+            var $bnrSlider = $('.bnr_slider');
+    
+            response.data.forEach(data => {
+                var subText = data.attributes.sub_text;
+                var mainText = data.attributes.main_text;
+                var bannerBgImg = data.attributes.banner_bg_img.data.attributes.url;
+                var bannerLogo = data.attributes.banner_logo.data.attributes.url;
+    
+                var bannerStructure = `
+                    <div class="bnr_slide">
+                        <div class="bnr_slide_in" style="background-image: url(http://localhost:1337${bannerBgImg});">
+                            <div class="container">
+                                <div class="bnr_txt">
+                                    <div class="bnr_txt_in">
+                                        <div class="bnr_lg">${mainText}</div>
+                                        <div class="bnr_pic">
+                                            <img src="http://localhost:1337${bannerLogo}" alt="manufacturing in Canada since 2021">
+                                        </div>
+                                    </div>
+                                    <p class="bnr_md">${subText}</p>
+                                    <a class="btn btn_lg popup_cta btn_alt" tabindex="-1">REQUEST A QUOTE</a>
+                                    <a href="#" class="btn btn_lg" tabindex="-1">VIEW PRODUCTS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $bnrSlider.append(bannerStructure);
+            });
+    
+            // Initialize the Slick slider after appending the slides
+            $bnrSlider.slick({
+                dots: true,
+                infinite: false,
+                speed: 300,
+                slidesToShow: 1,
+                adaptiveHeight: true
             });
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.error("Error: " + textStatus, errorThrown);
+            console.error("Response Text: " + jqXHR.responseText);
         }
     });
+    
 });
