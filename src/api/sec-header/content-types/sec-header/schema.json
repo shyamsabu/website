@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "sec_headers",
   "info": {
     "singularName": "sec-header",
@@ -11,7 +11,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "header": {
+    "Custom_sec": {
+      "type": "string"
+    },
+    "Custom_sub": {
+      "type": "string"
+    },
+    "Featured_sec": {
       "type": "string"
     }
   }

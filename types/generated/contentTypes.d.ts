@@ -788,36 +788,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAboutSubMenuAboutSubMenu extends Schema.CollectionType {
-  collectionName: 'about_sub_menus';
-  info: {
-    singularName: 'about-sub-menu';
-    pluralName: 'about-sub-menus';
-    displayName: 'about_sub_menu';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    menu: Attribute.Component<'menu.link', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::about-sub-menu.about-sub-menu',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::about-sub-menu.about-sub-menu',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiBannerSecBannerSec extends Schema.CollectionType {
   collectionName: 'banner_secs';
   info: {
@@ -1035,7 +1005,7 @@ export interface ApiResourseSubMenuResourseSubMenu
   };
 }
 
-export interface ApiSecHeaderSecHeader extends Schema.CollectionType {
+export interface ApiSecHeaderSecHeader extends Schema.SingleType {
   collectionName: 'sec_headers';
   info: {
     singularName: 'sec-header';
@@ -1046,7 +1016,9 @@ export interface ApiSecHeaderSecHeader extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    header: Attribute.String;
+    Custom_sec: Attribute.String;
+    Custom_sub: Attribute.String;
+    Featured_sec: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1083,7 +1055,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::about-sub-menu.about-sub-menu': ApiAboutSubMenuAboutSubMenu;
       'api::banner-sec.banner-sec': ApiBannerSecBannerSec;
       'api::featured-servc.featured-servc': ApiFeaturedServcFeaturedServc;
       'api::hdr-and-ftr-section.hdr-and-ftr-section': ApiHdrAndFtrSectionHdrAndFtrSection;

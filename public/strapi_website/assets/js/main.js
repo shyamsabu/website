@@ -138,11 +138,10 @@ jQuery(function() {
     $.ajax({
         url: 'http://localhost:1337/api/banner-secs?populate=*',
         method: 'GET',
-        success: function(response) {
-            console.log(response);
+        success: function(response6) {
             var $bnrSlider = $('.bnr_slider');
     
-            response.data.forEach(data => {
+            response6.data.forEach(data => {
                 var subText = data.attributes.sub_text;
                 var mainText = data.attributes.main_text;
                 var bannerBgImg = data.attributes.banner_bg_img.data.attributes.url;
@@ -184,5 +183,47 @@ jQuery(function() {
             console.error("Response Text: " + jqXHR.responseText);
         }
     });
+
+
+
+    $.ajax({
+        url: 'http://localhost:1337/api/sec-header?populate=*',
+        method: 'GET',
+        success: function(response7) {
+           console.log(response7);
+
+           var Custom_sec = response7.data.attributes.Custom_sec; 
+           var Custom_sub = response7.data.attributes.Custom_sub;
+           var Featured_sec = response7.data.attributes.Featured_sec;
+
+           $('.Custom_sec').text(Custom_sec);
+           $('.Custom_sub').text(Custom_sub);
+           $('.Featured_sec').text(Featured_sec);
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error("Error: " + textStatus, errorThrown);
+        }
+    });
+
+
+    $.ajax({
+        url: 'http://localhost:1337/api/popular-products?populate=*',
+        method: 'GET',
+        success: function(response) {
+            console.log(response);
+    
+            response.data.forEach(data => {
+                var prd_img = data.attributes.prdct_img.data.attributes.url;
+                var img_strctr = '<div class="col-md-4 col-12"><div class="prop_img"><img src="http://localhost:1337' + prd_img + '" alt=""></div></div>';
+                console.log(prd_img);
+                $('.img_wrap .row').append(img_strctr);
+            });
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error("Error: " + textStatus, errorThrown);
+        }
+    });
+    
     
 });
