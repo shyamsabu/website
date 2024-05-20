@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resourse_sub_menus",
+  "info": {
+    "singularName": "resourse-sub-menu",
+    "pluralName": "resourse-sub-menus",
+    "displayName": "resourse_sub_menu"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.link"
+    }
+  }
+}

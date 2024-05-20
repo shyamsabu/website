@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_sub_menus",
+  "info": {
+    "singularName": "about-sub-menu",
+    "pluralName": "about-sub-menus",
+    "displayName": "about_sub_menu"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.link"
+    }
+  }
+}

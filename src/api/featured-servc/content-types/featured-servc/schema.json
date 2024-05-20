@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "featured_servcs",
+  "info": {
+    "singularName": "featured-servc",
+    "pluralName": "featured-servcs",
+    "displayName": "featured_servc"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

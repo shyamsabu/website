@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "banner_secs",
+  "info": {
+    "singularName": "banner-sec",
+    "pluralName": "banner-secs",
+    "displayName": "banner_sec"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "main_text": {
+      "type": "string"
+    },
+    "sub_text": {
+      "type": "text"
+    },
+    "banner_bg_img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "banner_logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
